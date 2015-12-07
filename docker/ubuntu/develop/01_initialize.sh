@@ -3,5 +3,7 @@
 cd `dirname $0`/../../docker
 
 # docker-compose up -d postgres-zen
-docker-compose run --rm zen bash /user/src/app/setup/02_initialize.sh
+docker-compose run --rm zen git pull
+docker-compose run --rm ./localdev.js init zen
+
 
