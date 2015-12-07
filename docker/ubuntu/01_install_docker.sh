@@ -1,19 +1,18 @@
 #!/bin/bash
 
-# Ubuntu 14 and 15
-DOCKER=docker.io
-echo Ubuntu uses package \"$DOCKER\"
 
-
-sudo apt-get update
-sudo apt-get -y install $DOCKER
+if ! type docker
+then
+  # https://github.com/gliderlabs/docker-consul/issues/60#issuecomment-104561023
+  sudo wget -qO- https://get.docker.com/ | sh 
+fi
 
 # http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 # https://help.ubuntu.com/community/CheckingYourUbuntuVersion
 
-sudo service $DOCKER restart
+sudo service docker restart
 
 # install docker compose 
 #   https://docs.docker.com/compose/install/
