@@ -15,5 +15,5 @@ zen:
     - "8000"
   links: 
     - postgres-zen
-  volume:
+  volumes:
     - ../cp-local-development:/user/src/app/cp-local-development
