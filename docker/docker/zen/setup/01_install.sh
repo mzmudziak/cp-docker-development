@@ -10,8 +10,8 @@ echo following the tutorial at
 echo   http://www.nearform.com/nodecrunch/nodejs-sudo-free/
 echo
 
-apt-get -y -q install curl
-curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash
+apt-get -y -qq install curl
+curl -q https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash
 
 source ~/.bashrc
 source ~/.nvm/nvm.sh
@@ -49,9 +49,9 @@ echo install additional packages
 echo ---------------------------
 echo
 
-apt-get -y -q install git
+apt-get -y -qq install git
 
-npm -g install npm@latests
+npm -g install npm@latest
 
 npm install -g grunt
 
@@ -70,9 +70,16 @@ git clone $clone_url . || git pull $clone_url || { echo "Directory \"`pwd`\" not
 
 # command not found g++
 # /usr/share/unicode/UnicodeData.txt not found.
-apt-get -y -q install g++ unicode-data python make || { echo "Dependencies could not be installed. This will cause later crashes."; exit 1 ; }
+# Error: Command failed: tar (child): bzip2: Cannot exec: No such file or directory
+#    https://github.com/Medium/phantomjs/issues/133
+echo "Installing packages ..."
+apt-get -y -qq install g++ unicode-data python wget make bzip2 || { echo "Dependencies could not be installed. This will cause later crashes."; exit 1 ; }
 
 npm install
 
 ./localdev.js || { echo "ERROR: \"./localdev.js\""; exit 1; }
+
+# remove all unnecessary packages
+#   https://help.ubuntu.com/community/AptGet/Howto
+apt-get clean
 
