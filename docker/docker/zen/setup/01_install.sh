@@ -10,7 +10,7 @@ echo following the tutorial at
 echo   http://www.nearform.com/nodecrunch/nodejs-sudo-free/
 echo
 
-apt-get -y install curl
+apt-get -y -q install curl
 curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash
 
 source ~/.bashrc
@@ -29,7 +29,7 @@ nvm alias default stable
 
 echo 
 echo "searching for compatible nvm versions v0.10.*"
-nvm_latest_version=`nvm ls-remote | grep -E "(^|\s)v0\.10\." | tail -n1 | grep -E -o "v[0123456789.]+"`
+nvm_latest_version=`nvm ls-remote | grep -E "(^|\s)v?0\.10\." | tail -n1 | grep -E -o "v?[0123456789.]+"`
 echo "nvm version to install is $nvm_latest_version"
 echo 
 
@@ -49,11 +49,11 @@ echo install additional packages
 echo ---------------------------
 echo
 
-apt-get -y install git
-
-npm install -g grunt
+apt-get -y -q install git
 
 npm -g install npm@latests
+
+npm install -g grunt
 
 echo
 echo -------------------------------------------------------------------------------
@@ -66,11 +66,11 @@ mkdir -p "$directory"
 
 cd "$directory"
 
-git clone $clone_url . || git pull $clone_url
+git clone $clone_url . || git pull $clone_url || { echo "Directory \"`pwd`\" not usable. Content: `ls`"; exit 1; }
 
 # command not found g++
 # /usr/share/unicode/UnicodeData.txt not found.
-apt-get -y install g++ unicode-data
+apt-get -y -q install g++ unicode-data python make || { echo "Dependencies could not be installed. This will cause later crashes."; exit 1 ; }
 
 npm install
 
