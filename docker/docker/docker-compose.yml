@@ -1,11 +1,11 @@
 postgres-zen:
-  image: postgres-zen
+  image: coderdojo/postgres-zen
   command: postgres
   ports: 
     - "5432"
 
 zen: 
-  image: zen
+  image: coderdojo/zen
   command: ./localdev.js run zen
   ports: 
     # zen runs on this port
@@ -15,3 +15,5 @@ zen:
     - "8000"
   links: 
     - postgres-zen
+  volume:
+    - ../cp-local-development:/user/src/app/cp-local-development
