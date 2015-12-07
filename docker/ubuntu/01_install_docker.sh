@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-sudo apt-get install docker.io
-
 if lsb_release -a 2>>/dev/null | grep -q "Release:\s*14"
 then
   DOCKER=docker.io
