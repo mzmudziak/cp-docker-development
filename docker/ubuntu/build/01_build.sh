@@ -3,10 +3,6 @@
 # go to the docker directory
 cd "`dirname $0`"/../../docker
 
-# remove the current images
-docker rmi zen
-docker rmi postgres-zen
-
 # build the current version
 docker build -t zen zen
 docker build -t postgres-zen postgres-zen

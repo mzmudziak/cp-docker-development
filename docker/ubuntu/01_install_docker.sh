@@ -12,3 +12,12 @@ then
 else
   sudo service docker restart
 fi
+
+if docker info
+then
+  echo
+  echo "You do NOT need to log out and in - the \"docker\" command can be used without sudo."
+else
+  echo
+  echo "You must log out and in to use the \"docker\" command without super user privileges."
+fi
