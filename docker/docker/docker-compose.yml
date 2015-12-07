@@ -1,0 +1,17 @@
+postgres-zen:
+  image: postgres-zen
+  command: postgres
+  ports: 
+    - "5432"
+
+zen: 
+  image: zen
+  command: ./localdev.js run zen
+  ports: 
+    # zen runs on this port
+    - "8000"
+  expose:
+    # expose the port of zen to the user
+    - "8000"
+  links: 
+    - postgres-zen
