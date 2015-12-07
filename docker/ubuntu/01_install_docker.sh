@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt-get update
 sudo apt-get -y install docker docker-compose
 
 # http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo
