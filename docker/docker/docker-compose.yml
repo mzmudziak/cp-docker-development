@@ -2,6 +2,7 @@
 #   https://docs.docker.com/compose/compose-file/
 
 postgres-zen:
+  container_name: postgres-zen
   image: coderdojo/postgres-zen
   command: postgres
   ports: 
@@ -10,6 +11,7 @@ postgres-zen:
     - "5432"
 
 zen: 
+  container_name: zen
   image: coderdojo/zen
   command: ./localdev.js run zen
   ports: 
