@@ -1,7 +1,12 @@
+# read about the content here
+#   https://docs.docker.com/compose/compose-file/
+
 postgres-zen:
   image: coderdojo/postgres-zen
   command: postgres
   ports: 
+    - "5432"
+  expose:
     - "5432"
 
 zen: 
@@ -11,9 +16,9 @@ zen:
     # zen runs on this port
     - "8000"
   expose:
-    # expose the port of zen to the user
+    # expose the port of zen to other services
     - "8000"
   links: 
     - postgres-zen
   volumes:
-    - ../cp-local-development:/user/src/app/cp-local-development
+    - ../code:/user/src/app/cp-local-development
