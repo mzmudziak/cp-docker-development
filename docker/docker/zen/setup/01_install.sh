@@ -73,7 +73,7 @@ git clone $clone_url . || git pull $clone_url || { echo "Directory \"`pwd`\" not
 # Error: Command failed: tar (child): bzip2: Cannot exec: No such file or directory
 #    https://github.com/Medium/phantomjs/issues/133
 echo "Installing packages ..."
-apt-get -y -qq install g++ unicode-data python wget make bzip2 || { echo "Dependencies could not be installed. This will cause later crashes."; exit 1 ; }
+apt-get -y -qq install g++ gcc unicode-data python wget make bzip2 || { echo "Dependencies could not be installed. This will cause later crashes."; exit 1 ; }
 
 npm install
 
