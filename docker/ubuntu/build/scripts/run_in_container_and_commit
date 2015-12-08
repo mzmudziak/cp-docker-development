@@ -1,0 +1,48 @@
+#!/bin/bash
+
+cd `dirname $0`/../../../docker
+
+image_name=$1
+command=$2
+message=$3
+
+if [ -z "$image_name" ] || [ -z "$command" ] || [ -z "$message" ]
+then
+  echo "$0 image_name command commit_message"
+  exit 1
+fi
+
+container_name=`docker-compose run -d "$image_name" bash -c "$command" | tail -n1`
+
+echo "Running $1 in container \"$container_name\"."
+
+function container_is_running {
+  ps | grep -E -o '\S+\s*$' | tail -n+2 | grep -xq "$container_name"
+}
+
+# watch the output
+docker logs -f "$container_name" &
+
+sleep 1
+
+process_id=$!
+
+while container_is_running
+do
+  sleep 1
+done
+
+kill "$process_id" 2>>/dev/null
+
+wait $process_id
+
+new_image=`docker commit --message="$message" "$container_name"`
+
+docker tag -f $new_image zen
+docker tag -f zen coderdojo/zen
+
+echo -n "Deleting container "
+docker rm "$container_name"
+
+
+
