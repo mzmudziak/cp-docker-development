@@ -1,5 +1,6 @@
 #!/bin/bash
 
-# remove the current images
-docker rmi zen
-docker rmi postgres-zen
+docker stop zen postgres-zen
+docker rm zen postgres-zen
+docker rmi zen postgres-zen coderdojo/zen coderdojo/postgres-zen
+
