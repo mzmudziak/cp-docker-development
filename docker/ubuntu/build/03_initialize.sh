@@ -1,7 +1,8 @@
 #!/bin/bash
 
-cd `dirname $0`/../../docker
+cd `dirname $0`
 
-docker-compose run --rm zen setup/02_initialize.sh
+scripts/run zen setup/02_initialize.sh && \
+scripts/commit_all "initialization complete"
 
 
