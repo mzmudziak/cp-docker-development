@@ -1,0 +1,5 @@
+#!/bin/bash
+
+email=`git config --get user.name 2>>/dev/null || echo ${USER}@$(hostname)`
+author=`git config --get user.email 2>>/dev/null || echo $USER`
+echo "$author <$email>"

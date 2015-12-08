@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cd `dirname $0`/../../../docker
+
+name=$1
+
+shift 1
+
+# check arguments
+if [ -z "$name" ]
+then
+  echo "$0 name [command]"
+  echo "  name is the container name and the image name"
+  exit 1
+fi
+
+# run the process
+docker-compose stop "$name"
+docker-compose rm "$name"
+docker rm "$name"
+# run the container and give it a special name
+docker-compose run --name "$name" "$name" "$@"
+

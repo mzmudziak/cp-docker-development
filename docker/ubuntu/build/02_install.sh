@@ -1,5 +1,7 @@
 #!/bin/bash
 
-cd `dirname $0`/../../docker
+cd `dirname $0`
 
-docker-compose run --rm zen setup/01_install.sh
+scripts/run zen setup/01_install.sh
+scripts/commit_all "installation complete"
+

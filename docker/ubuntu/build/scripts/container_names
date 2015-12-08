@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cat `dirname $0`/../../../docker/docker-compose.yml | grep -E '^\S+:\s*$' | grep -o -E '^[^#][^:]+'
+
