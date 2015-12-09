@@ -19,5 +19,5 @@ docker-compose stop "$name"
 docker-compose rm "$name"
 docker rm "$name"
 # run the container and give it a special name
-docker-compose run --name "$name" "$name" "$@"
+docker-compose run --service-ports --name "$name" "$name" "$@"
 

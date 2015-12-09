@@ -2,6 +2,7 @@
 #   https://docs.docker.com/compose/compose-file/
 
 postgres-zen:
+  hostname: postgres-zen
   container_name: postgres-zen
   image: coderdojo/postgres-zen
   command: postgres
@@ -13,15 +14,15 @@ postgres-zen:
 #    - "5432"
 
 zen: 
+  hostname: zen
   container_name: zen
   image: coderdojo/zen
   command: bash
   ports: 
     # zen runs on this port
     - "8000:8000"
-  expose:
-    # expose the port of zen to other services
-    - "8000"
+    # apiBaseUrl
+    - "8080:8080"
   links: 
     - postgres-zen
   volumes:
