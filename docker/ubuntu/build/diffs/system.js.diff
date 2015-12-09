@@ -1,0 +1,14 @@
+diff --git a/system.js b/system.js
+index 587c7f9..cc8da5c 100644
+--- a/system.js
++++ b/system.js
+@@ -7,7 +7,7 @@ var defaultBranch = 'master';
+ var globalEnv = {
+   POSTGRES_USERNAME: 'platform',
+   POSTGRES_PASSWORD: 'QdYx3D5y',
+-  POSTGRES_HOST: 'localhost',
++  POSTGRES_HOST: 'postgres-zen',
+   POSTGRES_PORT: 5432,
+   MAILTRAP_ENABLED: 'true',
+   SALESFORCE_ENABLED: 'false',
+
