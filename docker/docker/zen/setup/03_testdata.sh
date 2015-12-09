@@ -10,7 +10,7 @@ PID=$!
 
 # http://stackoverflow.com/a/12121838
 # try to connect
-while ! wget -q -O - 1>/dev/null 
+while ! wget -q -O - http://localhost:8000 1>/dev/null 
 do
   sleep 1
 done
