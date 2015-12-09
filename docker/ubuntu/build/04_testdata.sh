@@ -1,5 +1,6 @@
 #!/bin/bash
 
-cd `dirname $0`/../../docker
+cd `dirname $0`
 
-docker-compose run --rm zen setup/03_testdata.sh
+scripts/run zen setup/03_testdata.sh && \
+scripts/commit_all "added test data"
