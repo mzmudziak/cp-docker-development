@@ -23,6 +23,8 @@ zen:
     - "8000:8000"
     # apiBaseUrl
     - "8080:8080"
+    # forum 
+    - "4567:4567"
   links: 
     - postgres-zen
   volumes:
