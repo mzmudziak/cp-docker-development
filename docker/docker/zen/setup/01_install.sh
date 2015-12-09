@@ -29,7 +29,7 @@ nvm alias default stable
 
 echo 
 echo "searching for compatible nvm versions v0.10.*"
-nvm_latest_version=`nvm ls-remote | grep -E "(^|\s)v?0\.10\." | tail -n1 | grep -E -o "v?[0123456789.]+"`
+nvm_latest_version=`nvm ls-remote | grep -E "(^|\s)v?0\.10\." | tail -n1 | grep -E -o '\S+$'`
 echo "nvm version to install is $nvm_latest_version"
 echo 
 
@@ -54,6 +54,12 @@ apt-get -y -qq install git
 npm -g install npm@latest
 
 npm install -g grunt
+
+# install bower and allow root install
+#   http://stackoverflow.com/a/25674462
+echo '{ "allow_root": true }' > /root/.bowerrc
+#   https://github.com/npm/npm/issues/3497#issuecomment-51959226
+echo 'unsafe-perm=true' >/root/.npmrc
 
 echo
 echo -------------------------------------------------------------------------------
