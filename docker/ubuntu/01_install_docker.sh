@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-if ! type docker
+if ! type docker 2>>/dev/null
 then
   # https://github.com/gliderlabs/docker-consul/issues/60#issuecomment-104561023
   sudo wget -qO- https://get.docker.com/ | sh 
