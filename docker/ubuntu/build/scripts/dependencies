@@ -1,0 +1,11 @@
+#!/bin/bash
+
+docker inspect --format='{{json .HostConfig.Links }}' $1 | python -c '
+import json, sys
+d = json.load(sys.stdin)
+if d:
+    for c in d: 
+        if ":" in c:
+            c = c[:c.find(":")]
+        print(c)'
+

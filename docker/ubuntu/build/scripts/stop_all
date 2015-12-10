@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# this script stops all docker containers in order
+# the order is that no linked container is stopped before the container that linked to it
+#
+# Worst case time complexity for linked container list: O(n^3)
+# Worst case time complexity: O(linkdepth*n^2)
+
+
+cd `dirname $0`
+
+container_names="`./container_names`"
+
+echo "Stopping containers: "$container_names
+
+# start all paused containers
+for container_name in $container_names
+do
+  if ./is_paused $container_name
+  then
+    docker unpause $container_name
+  fi
+done
+
+
+for _ in $container_names
+do
+  all_stopped=true
+  # each of this loop-runs at least one container will be stopped unless there is a cycle
+  for dependency in $container_names
+  do
+    if ./is_running "$dependency"
+    then
+      # can stop unless there is a running container with this container as container_dependency
+      can_stop=true
+      for container_name in $container_names
+      do
+        if ./is_running "$container_name"
+        then 
+          for container_dependency in `./dependencies "$container_name"`
+          do
+            if ./container== "$container_dependency" "$dependency"
+            then
+              # dependency is a dependency of container_name
+              can_stop=false
+            fi
+          done
+        fi
+      done
+      if [ $can_stop == true ]
+      then
+        echo -n "Stopping "
+        docker stop "$dependency"
+      else
+        all_stopped=false
+      fi
+    fi
+  done
+  if [ $all_stopped == true ]
+  then
+    break
+  fi
+done
+
+# if there is a cycle we stop them all
+for container_name in $container_names
+do
+  if ./is_running $container_name
+  then
+    echo -n "Breaking cyclic dependency. Stopping "
+    docker stop $container_name
+  fi
+done
+

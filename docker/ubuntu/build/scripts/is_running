@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ "`docker inspect --format='{{json .State.Running }}' $1`" == "true" ]
+
