@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ "`docker inspect --format='{{json .State.Paused }}' $1`" == "true" ]
+

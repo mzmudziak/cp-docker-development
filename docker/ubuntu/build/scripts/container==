@@ -1,0 +1,3 @@
+#!/bin/bash
+
+[ "`docker inspect --format='{{ .Id }}' $1`" == "`docker inspect --format='{{ .Id }}' $2`" ]

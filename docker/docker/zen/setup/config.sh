@@ -1,7 +1,10 @@
 #!/bin/bash
 
 source ~/.bashrc
-source ~/.nvm/nvm.sh
+if [ -s ~/.nvm/nvm.sh ]
+then
+  source ~/.nvm/nvm.sh
+fi
 
 clone_url="https://github.com/CoderDojo/cp-local-development.git"
 directory=/user/src/app/cp-local-development

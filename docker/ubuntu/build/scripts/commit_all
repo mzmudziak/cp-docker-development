@@ -12,6 +12,8 @@ fi
 
 container_names=`./container_names`
 
+./stop_all
+
 for container_name in $container_names
 do
   echo "Committing container named \"$container_name\"."
