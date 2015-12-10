@@ -15,6 +15,16 @@ cd ../../code/
 
 sudo chown ${USER} . -R
 
-patch -p1 -N system.js $diff || { echo "Could not set POSTGRES_HOST in code/system.js to \"postgres-zen\". You need to do it manually or the 03_initialize.sh fails because it can not connect to postgres." ; exit 1 ; }
+if ! patch -p1 -N system.js $diff
+then
+  # could not apply patch
+  if [ "`git diff system.js`" == "`cat "$diff"`" ]
+  then
+    echo "The patch has beed applied to code/system.js. Postgres should be reachable in 03_initialize.sh."
+  else
+    echo "Could not set POSTGRES_HOST in code/system.js to \"postgres-zen\". You need to do it manually or the 03_initialize.sh fails because it can not connect to postgres."
+    exit 1
+  fi
+fi
 
 
