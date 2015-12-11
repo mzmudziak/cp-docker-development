@@ -147,7 +147,10 @@ git clone $clone_url . || { echo "ERROR: git could not clone $clone_url into $di
 
 # command not found g++
 # /usr/share/unicode/UnicodeData.txt not found.
-sudo apt-get -y install g++ unicode-data
+# Error: Command failed: tar (child): bzip2: Cannot exec: No such file or directory
+#    https://github.com/Medium/phantomjs/issues/133
+echo "Installing packages ..."
+sudo apt-get -y -qq install g++ gcc unicode-data python wget make bzip2 postgresql-client || { echo "ERROR: Dependencies could not be installed. This will cause later crashes."; exit 1 ; }
 
 npm install
 
