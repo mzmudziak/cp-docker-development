@@ -16,7 +16,7 @@ zen:
   hostname: zen
   container_name: zen
   image: coderdojo/zen
-  command: bash
+  command: setup/05_bash.sh
   ports: 
     # zen runs on this port
     - "8000:8000"
