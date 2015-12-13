@@ -1,9 +1,10 @@
+Create a bootable Zen VM for development
+========================================
 
-build:
-https://github.com/boot2docker/boot2docker/blob/master/doc/BUILD.md
 
-Sharing files: 
-https://github.com/boot2docker/boot2docker#folder-sharing
-Persist data: TODO
-https://github.com/boot2docker/boot2docker#persist-data
+
+Sources:
+- build: https://github.com/boot2docker/boot2docker/blob/master/doc/BUILD.md
+- sharing files: https://github.com/boot2docker/boot2docker#folder-sharing
+- persist data: TODO https://github.com/boot2docker/boot2docker#persist-data
 
