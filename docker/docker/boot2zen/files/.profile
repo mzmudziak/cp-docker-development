@@ -6,7 +6,7 @@ wait_for_zen_to_start_samba() {
     sleep 1
   done
   docker pull niccokunzmann/samba-share 
-  docker run -e RUN_ARGUMENTS="--net=host" niccokunzmann/samba-share zen | sh
+  docker run -e RUN_ARGUMENTS="--net=host" niccokunzmann/samba-share zen | sh 1>>/dev/null
   # publish ports
   #   https://docs.docker.com/engine/userguide/networking/default_network/binding/
   echo "IPs: "`ip -o addr | grep -o -E 'inet6?\s+[0123456789abcdef.:]+' | grep -o -E '\S+$'`
