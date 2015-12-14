@@ -9,7 +9,7 @@ wait_for_zen_to_start_samba() {
   docker run -e RUN_ARGUMENTS="--net=host" niccokunzmann/samba-share zen | sh
   # publish ports
   #   https://docs.docker.com/engine/userguide/networking/default_network/binding/
-  echo "IPs: "`ip -o addr | grep -O -E 'inet6?\s+[0123456789abcdef.:]+' | grep -o -E '\S+$'`
+  echo "IPs: "`ip -o addr | grep -o -E 'inet6?\s+[0123456789abcdef.:]+' | grep -o -E '\S+$'`
 }
 
 start_zen_bash() {
@@ -30,8 +30,10 @@ start_zen_bash() {
   wait_for_zen_to_start_samba &
   docker-compose run --service-ports --name zen zen "$@"
   cd "$location"
-  echo "Run \"start_zen_bash\" to start the zen bash."
+  echo "Run \"start_zen_bash\" to enter the zen command line."
 }
 
 # install nano
-sudo -u docker tce-load -wi nano > /dev/null
+sudo -u docker tce-load -wi nano 1>>/dev/null 2>>/dev/null
+
+echo "Run \"start_zen_bash\" to enter the zen command line."
