@@ -19,11 +19,11 @@ zen:
   command: setup/05_bash.sh
   ports: 
     # zen runs on this port
-    - "8000:8000"
+    - "0.0.0.0:8000:8000"
     # apiBaseUrl
-    - "8080:8080"
+    - "0.0.0.0:8080:8080"
     # forum 
-    - "4567:4567"
+    - "0.0.0.0:4567:4567"
   links: 
     - postgres-zen
   volumes:
