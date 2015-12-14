@@ -1,7 +1,7 @@
 #!/bin/sh
 
 wait_for_zen_to_start_samba() {
-  while ! [ "`docker inspect --format='{{json .State.Running }}' zen`" == "true" ]
+  while ! [ "`docker inspect --format='{{json .State.Running }}' zen 2>>/dev/null`" == "true" ]
   do
     sleep 1
   done
