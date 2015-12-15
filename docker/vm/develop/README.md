@@ -1,7 +1,7 @@
 Developing Zen with the Virtual Machine
 =======================================
 
-There is the option to [have a virtual machine run Zen and be the development machine](../../../). In contrast to that, the focus is on having a virtual machine run Zen and working on the host system.
+There is the option to [have a virtual machine run Zen and write the code in it](../../../). In contrast to that, the focus here is on having a virtual machine run Zen and working on the host system.
 
 This should be as easy as
 
