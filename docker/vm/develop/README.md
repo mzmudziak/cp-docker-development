@@ -6,7 +6,7 @@ There is the option to [have a virtual machine run Zen and write the code in it]
 This should be as easy as
 
 1. Make sure you have [VMWare Player](https://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_workstation_player/12_0) or [Virtual Box](http://virtualbox.org/) or some other software installed that is able to run virtual machines.
-2. [Download a VM](https://github.com/niccokunzmann/cp-docker-development/releases). 
+2. [Download a VM](https://github.com/niccokunzmann/cp-docker-development/releases) "boot2zen". 
 3. When starting the VM, you land in a linux shell. Here you execute the command `start_zen_bash`. This command takes a long time loading the images from [dockerhub](https://hub.docker.com/u/coderdojo/). 
 4. After a long while, the IP addresses are printed to the screen. In the same moment you are in the shell in the `zen` docker container. 
 5. To find out the right IP address, pick one that seems likely and open a Windows File Share "Samba".
