@@ -1,10 +1,10 @@
 Developing Zen Using Docker
 ===========================
 
-Operating Systems
+The docker images allow to download the development version of the Zen platform and run it at low installation cost. You can find installation tutorials for
 
 - [Ubuntu](ubuntu)
-
+- a [virtual machine](vm)
 
 Advantages
 ----------
