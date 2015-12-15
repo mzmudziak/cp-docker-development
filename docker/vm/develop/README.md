@@ -13,10 +13,10 @@ This should be as easy as
     - Under Windows, open an explorer window and type into the address bar `\\`, then the IP address and press Enter. You should be able to see a folder with the contents that you have in the shell in the vm. You can also create a drive with this folder if you go to "Computer" and add click "Map network dive".
     - Under OSX
         1. Goto Go|Connect to Server in Finder.
-	2. Enter "cifs://", then the IP address.
-	3. Hit the "Connect" button.
-	4. Select the volumes you want to mount.
-	5. choose the "Guest" radiobox and connect.
+        2. Enter "cifs://", then the IP address.
+        3. Hit the "Connect" button.
+        4. Select the volumes you want to mount.
+        5. choose the "Guest" radiobox and connect.
     - On Linux you can use the command line `mount -t cifs //IPADDRESS/user_src_app_cp-local-development /mnt/code -o username=guest"` or navigate to the host similar to Windows and OSX in the file browser.
 
 6. Now that you know the IP address, run `./localdev.js run zen` to start the zen service. Then, open a web browser and navigate to the IPAddress with Port 8000. If the IP address were `192.168.60.163`, you open the site `192.168.60.163:8000`. The [coder dojo website](http://zen.coderdojo.com) should look similar.
