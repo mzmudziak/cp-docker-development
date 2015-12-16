@@ -7,19 +7,25 @@ FROM boot2docker/boot2docker
 RUN mkdir -p $ROOTFS/data/docker-compose
 ADD ./tmp/docker-compose.yml $ROOTFS/data/docker-compose/
 
-# install docker-compose in the iso
-RUN mkdir -p $ROOTFS/usr/local/bin
-RUN curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > "$ROOTFS/usr/local/bin/docker-compose"
-RUN chmod +x "$ROOTFS/usr/local/bin/docker-compose"
-
 # install the autorun script
 RUN mkdir -p $ROOTFS/opt
 ADD ./files/bootlocal.sh $ROOTFS/opt/bootlocal.sh
 RUN chmod +x $ROOTFS/opt/bootlocal.sh
 
-# install shall login scripts
-RUN mkdir -p $ROOTFS/root
-ADD ./files/.profile $ROOTFS/root/.profile
+# install start_zen_bash
+RUN mkdir -p $ROOTFS/usr/bin/local
+ADD ./files/start_zen_bash $ROOTFS/usr/bin/local/start_zen_bash
+RUN chmod +x $ROOTFS/usr/bin/local/start_zen_bash
+
+# install shell login scripts
+RUN mkdir -p $ROOTFS/root $ROOTFS/home/docker/
+RUN echo 'echo "Run \"start_zen_bash\" to enter the zen command line."' >> $ROOTFS/root/.profile
+RUN echo 'echo "Run \"start_zen_bash\" to enter the zen command line."' >> $ROOTFS/home/docker/.profile
+
+# install docker-compose in the iso
+RUN mkdir -p $ROOTFS/usr/local/bin
+RUN curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > "$ROOTFS/usr/local/bin/docker-compose"
+RUN chmod +x "$ROOTFS/usr/local/bin/docker-compose"
 
 # make the iso file and output it on start
 #   https://github.com/boot2docker/boot2docker/blob/master/doc/BUILD.md
