@@ -2,7 +2,7 @@
 
 cd "`dirname $0`/../../docker/boot2zen"
 
-mkdir tmp
+mkdir -p tmp
 cp ../docker-compose.yml ./tmp/docker-compose.yml
 
 docker rmi coderdojo/boot2zen
