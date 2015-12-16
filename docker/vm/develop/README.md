@@ -43,6 +43,7 @@ Useful commands
   - `vi` is the editor [vim](http://vim.org) to edit files
   - you can install `nano` with `sudo -u docker tce-load -wi nano`
   - `ip addr` to show the IP addresses
+  - `udhcpc` to get a new IP address after the virtual machine is restored
   - `start_zen_bash` to start the docker image in the zen container and enter the bash
 - zen bash
   - See [../../ubuntu/develop](../../ubuntu/develop/README.md#useful-commands)
