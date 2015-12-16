@@ -24,8 +24,9 @@ This should be as easy as
 7. If you do not want to work on the virtual machines command line, you can also use ssh.
     - Under Linux, you can use `ssh docker@192.168.60.163`.
     - Under Windows you can [download Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and connect to the IP at port 22 using SSH.
-    Username: `docker`
-    Password: `tcuser`
+    
+    Username: `docker`  
+    Password: `tcuser`  
     See [boot2docker](https://github.com/boot2docker/boot2docker/#ssh-into-vm) for more infrmation on this.
 
 How to Develop
