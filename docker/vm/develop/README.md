@@ -28,6 +28,15 @@ You have the code mapped to a location on your host. You can change the source c
 
 Having the VM set up shortens setup time but still, you need to know what to do. This VM installation is based on the [Ubuntu Docker installation](../../ubuntu). Read further [here](../../ubuntu/develop).
 
+Useful commands
+---------------
+
+- in boot2docker
+  - `vi` is the editor [vim](http://vim.org) to edit files
+  - you can install `nano` with `sudo -u docker tce-load -wi nano`
+- zen bash
+  - See [../../ubuntu/develop](../../ubuntu/develop/README.md#useful-commands)
+
 What is going on
 ----------------
 
