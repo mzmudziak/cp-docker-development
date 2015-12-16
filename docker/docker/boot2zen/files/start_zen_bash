@@ -5,11 +5,8 @@ wait_for_zen_to_start_samba() {
   do
     sleep 1
   done
-  docker pull niccokunzmann/samba-share 
+  docker pull niccokunzmann/samba-share 1>>/dev/null
   docker run -e RUN_ARGUMENTS="--net=host" niccokunzmann/samba-share zen | sh 1>>/dev/null
-  # publish ports
-  #   https://docs.docker.com/engine/userguide/networking/default_network/binding/
-  echo "IPs: "`ip -o addr | grep -o -E 'inet6?\s+[0123456789abcdef.:]+' | grep -o -E '\S+$'`
 }
 
 start_zen_bash() {
@@ -22,18 +19,19 @@ start_zen_bash() {
     message="Committing container named \"zen\"."
     echo "$message"
     new_image=`docker commit --pause=true --message="$message" zen`
-    docker tag -f $new_image coderdojo/zen
-    docker-compose stop zen
-    docker-compose rm zen
-    docker rm zen
+    docker tag -f $new_image coderdojo/zen 1>>/dev/null
+    docker-compose stop zen 1>>/dev/null
+    docker-compose rm zen 1>>/dev/null
+    docker rm zen 1>>/dev/null
   fi
   wait_for_zen_to_start_samba &
+  # publish ports
+  #   https://docs.docker.com/engine/userguide/networking/default_network/binding/  
+  echo "IPs: "`ip -o addr | grep -o -E 'inet6?\s+[0123456789abcdef.:]+' | grep -o -E '\S+$'`
   docker-compose run --service-ports --name zen zen "$@"
   cd "$location"
   echo "Run \"start_zen_bash\" to enter the zen command line."
 }
 
-# install nano
-sudo -u docker tce-load -wi nano 1>>/dev/null 2>>/dev/null
+start_zen_bash "$@"
 
-echo "Run \"start_zen_bash\" to enter the zen command line."
