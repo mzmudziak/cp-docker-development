@@ -7,3 +7,5 @@ They make a basic, automated install.
 Currently supported Operating Systems:
 
 - [Ubuntu](ubuntu)
+
+These scripts follow the steps in [cp-local-development](https://github.com/CoderDojo/cp-local-development) closely.
