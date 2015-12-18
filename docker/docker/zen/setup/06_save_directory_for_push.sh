@@ -6,5 +6,6 @@ rm -rf $code_copy
 
 mkdir -p $code_copy
 
+echo "Saving content of \"$directory\" to \"$code_copy\". ..."
 # http://stackoverflow.com/a/4645159
 cp "$directory"/. "$code_copy" -R
