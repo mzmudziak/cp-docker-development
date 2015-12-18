@@ -6,7 +6,7 @@ Installing Docker under Windows
 - Reboot
 - Install most recent release of VirtualBox
 - Install Docker Toolbox(without installing VirtualBox, which is included)
-- Open PowerShhttps://github.com/niccokunzmann/cp-docker-development/edit/master/docker/windows/InstallDockerUnderWindows.md#ell or cmd 
+- Open PowerShell or cmd 
 - Run `docker-machine -D create <name_of_your_machine> -d virtualbox`
 - If you get this error: VBoxManage.exe: error: Code E_INVALIDARG (0x80070057) - One or more arguments are invalid (extended info not available)
     1. go to Network and Sharing Center
