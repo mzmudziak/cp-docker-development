@@ -21,11 +21,12 @@ This should be as easy as
 
 6. Now that you know the IP address, run `./localdev.js run zen` to start the zen service. Then, open a web browser and navigate to the IPAddress with Port 8000. If the IP address were `192.168.60.163`, you open the site `192.168.60.163:8000`. The [coder dojo website](http://zen.coderdojo.com) should look similar.
 
-7. If you do not want to work on the virtual machines command line, you can also use ssh.
+7. If you do not want to work on the virtual machine's command line, you can also use ssh.
     - Under Linux, you can use `ssh docker@192.168.60.163`.
     - Under Windows you can [download Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and connect to the IP at port 22 using SSH.
-    Username: `docker`
-    Password: `tcuser`
+    
+    Username: `docker`  
+    Password: `tcuser`  
     See [boot2docker](https://github.com/boot2docker/boot2docker/#ssh-into-vm) for more infrmation on this.
 
 How to Develop
@@ -40,8 +41,9 @@ Useful commands
 
 - in boot2docker
   - `vi` is the editor [vim](http://vim.org) to edit files
-  - you can install `nano` with `sudo -u docker tce-load -wi nano`
+  - you can install `nano` with `tce-load -wi nano`
   - `ip addr` to show the IP addresses
+  - `udhcpc` to get a new IP address after the virtual machine is restored
   - `start_zen_bash` to start the docker image in the zen container and enter the bash
 - zen bash
   - See [../../ubuntu/develop](../../ubuntu/develop/README.md#useful-commands)
