@@ -111,6 +111,15 @@ export LANG=en_IE
 echo "
 # updating language for tests from $0
 export LANG=en_IE" >> ~/.bashrc
+# cp-e2e-tests# npm test --tag smoke
+#    Starting selenium server... 
+#    An error occurred while trying to start Selenium. Check if JAVA is installed on your machine.
+if ! type java 2>>/dev/null
+then
+  echo "java not frond, installing java"
+  # https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
+  apt-get -y -qq install default-jre
+fi
 
 echo
 echo -------------------------------------------------------------------------------
