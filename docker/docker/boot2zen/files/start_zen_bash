@@ -5,11 +5,20 @@ wait_for_zen_to_start_samba() {
   do
     sleep 1
   done
-  docker pull niccokunzmann/samba-share 1>>/dev/null
+  docker pull niccokunzmann/samba-share 2>>/dev/null 1>>/dev/null
   docker run -e RUN_ARGUMENTS="--net=host" niccokunzmann/samba-share zen | sh 1>>/dev/null
 }
 
+create_persistent_directory_for_code() {
+  sudo mkdir -p /var/lib/boot2docker/data/code
+  if ! [ -d /data/code ] 
+  then 
+    sudo ln -s -T /var/lib/boot2docker/data/code /data/code
+  fi
+}
+
 start_zen_bash() {
+  create_persistent_directory_for_code
   location="`pwd`"
   cd /data/docker-compose
   if docker inspect zen 1>>/dev/null 2>>/dev/null
