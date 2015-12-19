@@ -32,7 +32,13 @@ This should be as easy as
 How to Develop
 --------------
 
-You have the code mapped to a location on your host. You can change the source code. Also, you can run the zen service. `boot2zen` is based on `boot2docker` which is based on [Tiny Core Linux](http://www.tinycorelinux.net/) which is not persistent. Files in `boot2zen` are lost once it reboots. Either always use suspend or save your work before you reboot.
+You have the code mapped to a location on your host. You can change the source code. Also, you can run the zen service. `boot2zen` is based on `boot2docker` which is based on [Tiny Core Linux](http://www.tinycorelinux.net/) which is not persistent. The downloadable version of boot2zen as a virtual machine has a hard drive attached with a partition named "boot2docker-data" which is mounted and saves
+
+- boot2docker information
+- docker containers and images
+- after you executed `start_zen_bash`, the /data/code directory with the source code
+
+Changes to any other files and folders will be lost after reboot - either suspend or read about tinycorelinux' persistance.
 
 Having the VM set up shortens setup time but still, you need to know what to do. This VM installation is based on the [Ubuntu Docker installation](../../ubuntu). Read further [here](../../ubuntu/develop).
 
@@ -43,7 +49,7 @@ Useful commands
   - `vi` is the editor [vim](http://vim.org) to edit files
   - you can install `nano` with `tce-load -wi nano`
   - `ip addr` to show the IP addresses
-  - `udhcpc` to get a new IP address after the virtual machine is restored
+  - `udhcpc` to get a new IP address after the virtual machine is restored form sleep
   - `start_zen_bash` to start the docker image in the zen container and enter the bash
 - zen bash
   - See [../../ubuntu/develop](../../ubuntu/develop/README.md#useful-commands)
